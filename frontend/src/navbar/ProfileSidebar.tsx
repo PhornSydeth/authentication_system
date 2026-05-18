@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { HiX, HiLogout, HiUser, HiMail, HiShieldCheck } from "react-icons/hi";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Button, Title, Subtitle, Muted, Modal } from "../components/ui";
+import { Button, Title, Muted, Modal } from "../components/ui";
 
 interface ProfileSidebarProps {
     isOpen: boolean;

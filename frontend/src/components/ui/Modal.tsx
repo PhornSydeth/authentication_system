@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { HiX } from "react-icons/hi";
-import { cn } from "./cn";
 import { Button } from "./Button";
 import { Title, Subtitle } from "./Text";
 
@@ -88,7 +87,7 @@ export const Modal: React.FC<ModalProps> = ({
                         <Button
                             variant={variant === "danger" ? "danger" : "primary"}
                             onClick={onConfirm}
-                            isLoading={isLoading}
+                            loading={isLoading}
                         >
                             {confirmText || "Confirm"}
                         </Button>

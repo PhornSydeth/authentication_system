@@ -10,7 +10,7 @@ import { ProfileSidebar } from "./ProfileSidebar";
 const linkClass = "text-sm font-medium text-slate-300 transition-colors hover:text-white";
 
 const Header: React.FC = () => {
-    const { isAuthenticated, user } = useAuth();
+    const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isProfileOpen, setIsProfileOpen] = useState(false);
