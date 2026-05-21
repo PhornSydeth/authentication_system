@@ -1,5 +1,6 @@
 package com.springsecurity.authsystem.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -10,11 +11,15 @@ import java.util.List;
 
 @Configuration
 public class WebConfig {
+
+    @Value("${cors.allowed-origins}")
+    private List<String> allowedOrigins;
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration config=new CorsConfiguration();
-        //React dev server to allow React talk to spring boot
-        config.setAllowedOrigins(List.of("http://localhost:5173"));
+        // Dynamic allowed origins from application.properties
+        config.setAllowedOrigins(allowedOrigins);
         //Http method for react front-end
         config.setAllowedMethods(List.of(
                 "GET","POST","PUT","DELETE","OPTIONS"

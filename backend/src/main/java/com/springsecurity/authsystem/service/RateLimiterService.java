@@ -34,8 +34,15 @@ public class RateLimiterService {
     private ProxyManager<String> proxyManager;
     private StatefulRedisConnection<String, byte[]> connection;
 
-    public RateLimiterService(@Value("${spring.data.redis.host}") String host, @Value("${spring.data.redis.port}") int port) {
-        this.redisClient = RedisClient.create(String.format("redis://%s:%d", host, port));
+    public RateLimiterService(
+            @Value("${spring.data.redis.host}") String host,
+            @Value("${spring.data.redis.port}") int port,
+            @Value("${spring.data.redis.password}") String password) {
+
+        // 2. Format with rediss:// (SSL) and include the password credentials
+        String redisUriString = String.format("rediss://default:%s@%s:%d", password, host, port);
+
+        this.redisClient = RedisClient.create(redisUriString);
     }
 
     @PostConstruct
